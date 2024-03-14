@@ -1,0 +1,24 @@
+mass = [[g.strip() for g in i.split('	')] for i in open('cars.txt', encoding='utf-8')]
+
+
+def search():
+    new_mass = []
+    manufacturer, color = map(str, input().split())
+
+    if manufacturer == 'car' and color == 'none':
+        return False
+
+    for x in mass:
+        if x[2] == manufacturer and x[-1] == color:
+            new_mass.append(f'{x[2]} {x[-1]} цена {x[0]}, пробег данной машины составляет {x[4]}')
+
+    if new_mass:
+        print('По вашему запросу:\n' + '\n'.join(new_mass))
+    else:
+        print('По данным параметрам ничего не найдено')
+
+    return True
+
+
+while search() is True:
+    search()
